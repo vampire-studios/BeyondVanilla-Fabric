@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "bv:block/shadow_slab" },
+        "type=top": { "model": "bv:block/shadow_slab_top" },
+        "type=double": { "model": "bv:block/shadow_planks" }
+    }
+}

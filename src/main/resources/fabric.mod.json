@@ -1,36 +1,31 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
-  "version": "${version}",
+  "id": "bv",
+  "version": "0.1.0",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Beyond Vanilla",
+  "description": "This mod adds a lot of vanilla-themed dimensions",
   "authors": [
-    "Me!"
+    "Vampire Studios"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/vampire-studios/BeyondVanilla-Fabric",
+    "sources": "https://github.com/vampire-studios/BeyondVanilla-Fabric",
+    "issues": "https://github.com/vampire-studios/BeyondVanilla-Fabric/issues"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/bv/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "io.github.vampirestudios.bv.BeyondVanilla"
     ]
   },
-  "mixins": [
-    "modid.mixins.json"
-  ],
 
   "depends": {
     "fabricloader": ">=0.4.0",
     "fabric": "*"
-  },
-  "suggests": {
-    "flamingo": "*"
   }
 }

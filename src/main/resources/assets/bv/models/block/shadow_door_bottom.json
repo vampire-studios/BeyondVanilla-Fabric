@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_bottom",
+    "textures": {
+        "bottom": "bv:block/shadow_door_bottom",
+        "top": "bv:block/shadow_door_top"
+    }
+}

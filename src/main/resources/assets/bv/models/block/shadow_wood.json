@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "particle": "bv:block/shadow_log",
+        "all": "bv:block/shadow_log"
+    }
+}

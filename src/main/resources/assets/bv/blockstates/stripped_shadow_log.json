@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y":  { "model": "bv:block/stripped_shadow_log" },
+    "axis=z":   { "model": "bv:block/stripped_shadow_log", "x": 90 },
+    "axis=x":   { "model": "bv:block/stripped_shadow_log", "x": 90, "y": 90 }
+  }
+}
