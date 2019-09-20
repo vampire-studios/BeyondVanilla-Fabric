@@ -4,7 +4,6 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.layer.IdentitySamplingLayer;
 import net.minecraft.world.biome.layer.LayerRandomnessSource;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
 
@@ -51,7 +50,8 @@ public enum ShadowSubBiomeLayer implements IdentitySamplingLayer {
 		}
 	}
 
-	public Biome[] addBiomes(Biome[] biomes) {
-		return ArrayUtils.addAll(biomes, subBiomesList.toArray(new Biome[0]));
+	public Set<Biome> addBiomes(Set<Biome> biomes) {
+//        biomes.addAll(subBiomesList);
+		return biomes;
 	}
 }

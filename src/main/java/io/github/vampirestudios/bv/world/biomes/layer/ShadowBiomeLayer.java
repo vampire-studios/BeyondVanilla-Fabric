@@ -1,5 +1,6 @@
 package io.github.vampirestudios.bv.world.biomes.layer;
 
+import com.google.common.collect.ImmutableSet;
 import io.github.vampirestudios.bv.init.BVBiomes;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
@@ -9,6 +10,7 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public enum ShadowBiomeLayer implements InitLayer {
 	INSTANCE;
@@ -43,8 +45,8 @@ public enum ShadowBiomeLayer implements InitLayer {
 		totalWeight += weight;
 	}
 
-	public Biome[] getBiomes() {
-		return biomesArray;
+	public Set<Biome> getBiomes() {
+		return ImmutableSet.copyOf(biomesArray);
 	}
 
 }

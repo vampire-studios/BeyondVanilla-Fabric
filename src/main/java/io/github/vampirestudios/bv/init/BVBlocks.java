@@ -31,6 +31,7 @@ public class BVBlocks {
     public static Block SHADOW_FENCE;
     public static Block SHADOW_FENCE_GATE;
     public static Block SHADOW_PLANT;
+//    public static Block SHADOW_PORTAL;
 
     static {
         SHADOW_GRASS = RegistryUtils.register(new Block(Block.Settings.copy(Blocks.GRASS_BLOCK)), new Identifier(BeyondVanilla.MOD_ID, "shadow_grass_block"));
@@ -54,6 +55,8 @@ public class BVBlocks {
 
         SHADOW_PLANT = RegistryUtils.register(new FlowerBlock(StatusEffects.GLOWING, 12, FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly()
                         .sounds(BlockSoundGroup.GRASS).build()), new Identifier(BeyondVanilla.MOD_ID, "shadow_plant"));
+
+//        SHADOW_PORTAL = RegistryUtils.register(new ShadowPortalBlock(), new Identifier(BeyondVanilla.MOD_ID, "shadow_portal"), ItemGroup.DECORATIONS);
     }
 
 }

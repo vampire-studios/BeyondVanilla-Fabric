@@ -5,13 +5,13 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Fertilizable;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.entity.EntityContext;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -31,7 +31,7 @@ public class SaplingBlock extends PlantBlock implements Fertilizable {
       return SHAPE;
    }
 
-   public void onScheduledTick(BlockState blockState_1, World world_1, BlockPos blockPos_1, Random random_1) {
+   public void onScheduledTick(BlockState blockState_1, ServerWorld world_1, BlockPos blockPos_1, Random random_1) {
       super.onScheduledTick(blockState_1, world_1, blockPos_1, random_1);
       if (world_1.getLightLevel(blockPos_1.up()) >= 9 && random_1.nextInt(7) == 0) {
          this.generate(world_1, blockPos_1, blockState_1, random_1);
@@ -39,11 +39,11 @@ public class SaplingBlock extends PlantBlock implements Fertilizable {
 
    }
 
-   private void generate(IWorld iWorld_1, BlockPos blockPos_1, BlockState blockState_1, Random random_1) {
+   private void generate(ServerWorld iWorld_1, BlockPos blockPos_1, BlockState blockState_1, Random random_1) {
       if (blockState_1.get(STAGE) == 0) {
          iWorld_1.setBlockState(blockPos_1, blockState_1.cycle(STAGE), 4);
       } else {
-         this.generator.generate(iWorld_1, blockPos_1, blockState_1, random_1);
+         this.generator.generate(iWorld_1, iWorld_1.method_14178().getChunkGenerator(), blockPos_1, blockState_1, random_1);
       }
 
    }
@@ -56,7 +56,7 @@ public class SaplingBlock extends PlantBlock implements Fertilizable {
       return (double)world_1.random.nextFloat() < 0.45D;
    }
 
-   public void grow(World world_1, Random random_1, BlockPos blockPos_1, BlockState blockState_1) {
+   public void grow(ServerWorld world_1, Random random_1, BlockPos blockPos_1, BlockState blockState_1) {
       this.generate(world_1, blockPos_1, blockState_1, random_1);
    }
 

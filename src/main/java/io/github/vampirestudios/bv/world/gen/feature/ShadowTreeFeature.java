@@ -3,11 +3,13 @@ package io.github.vampirestudios.bv.world.gen.feature;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.Dynamic;
 import io.github.vampirestudios.bv.init.BVBlocks;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.LogBlock;
+import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
@@ -27,7 +29,7 @@ public class ShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
       super(function_1, boolean_1);
    }
 
-   private void makeLeafLayer(ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, float float_1, MutableIntBoundingBox mutableIntBoundingBox_1, Set<BlockPos> set_1) {
+   private void makeLeafLayer(ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, float float_1, BlockBox mutableIntBoundingBox_1, Set<BlockPos> set_1) {
       int int_1 = (int)((double)float_1 + 0.618D);
 
       for(int int_2 = -int_1; int_2 <= int_1; ++int_2) {
@@ -68,14 +70,14 @@ public class ShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
       }
    }
 
-   private void makeLeaves(ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, MutableIntBoundingBox mutableIntBoundingBox_1, Set<BlockPos> set_1) {
+   private void makeLeaves(ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, BlockBox mutableIntBoundingBox_1, Set<BlockPos> set_1) {
       for(int int_1 = 0; int_1 < 5; ++int_1) {
          this.makeLeafLayer(modifiableTestableWorld_1, blockPos_1.up(int_1), this.getLeafRadiusForLayer(int_1), mutableIntBoundingBox_1, set_1);
       }
 
    }
 
-   private int makeOrCheckBranch(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, BlockPos blockPos_2, boolean boolean_1, MutableIntBoundingBox mutableIntBoundingBox_1) {
+   private int makeOrCheckBranch(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, BlockPos blockPos_2, boolean boolean_1, BlockBox mutableIntBoundingBox_1) {
       if (!boolean_1 && Objects.equals(blockPos_1, blockPos_2)) {
          return -1;
       } else {
@@ -125,7 +127,7 @@ public class ShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
       return direction$Axis_1;
    }
 
-   private void makeLeaves(ModifiableTestableWorld modifiableTestableWorld_1, int int_1, BlockPos blockPos_1, List<ShadowTreeFeature.BranchPosition> list_1, MutableIntBoundingBox mutableIntBoundingBox_1, Set<BlockPos> set_1) {
+   private void makeLeaves(ModifiableTestableWorld modifiableTestableWorld_1, int int_1, BlockPos blockPos_1, List<ShadowTreeFeature.BranchPosition> list_1, BlockBox mutableIntBoundingBox_1, Set<BlockPos> set_1) {
 
       for (BranchPosition largeOakTreeFeature$BranchPosition_1 : list_1) {
          if (this.isHighEnough(int_1, largeOakTreeFeature$BranchPosition_1.getEndY() - blockPos_1.getY())) {
@@ -139,11 +141,11 @@ public class ShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
       return (double)int_2 >= (double)int_1 * 0.2D;
    }
 
-   private void makeTrunk(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, int int_1, MutableIntBoundingBox mutableIntBoundingBox_1) {
+   private void makeTrunk(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, int int_1, BlockBox mutableIntBoundingBox_1) {
       this.makeOrCheckBranch(set_1, modifiableTestableWorld_1, blockPos_1, blockPos_1.up(int_1), true, mutableIntBoundingBox_1);
    }
 
-   private void makeBranches(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, int int_1, BlockPos blockPos_1, List<ShadowTreeFeature.BranchPosition> list_1, MutableIntBoundingBox mutableIntBoundingBox_1) {
+   private void makeBranches(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, int int_1, BlockPos blockPos_1, List<ShadowTreeFeature.BranchPosition> list_1, BlockBox mutableIntBoundingBox_1) {
 
       for (BranchPosition largeOakTreeFeature$BranchPosition_1 : list_1) {
          int int_2 = largeOakTreeFeature$BranchPosition_1.getEndY();
@@ -155,7 +157,7 @@ public class ShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
 
    }
 
-   public boolean generate(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, Random random_1, BlockPos blockPos_1, MutableIntBoundingBox mutableIntBoundingBox_1) {
+   public boolean generate(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, Random random_1, BlockPos blockPos_1, BlockBox mutableIntBoundingBox_1) {
       Random random_2 = new Random(random_1.nextLong());
       int int_1 = this.getTreeHeight(set_1, modifiableTestableWorld_1, blockPos_1, 5 + random_2.nextInt(12), mutableIntBoundingBox_1);
       if (int_1 == -1) {
@@ -223,7 +225,7 @@ public class ShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
    }
 
 
-   private int getTreeHeight(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, int int_1, MutableIntBoundingBox mutableIntBoundingBox_1) {
+   private int getTreeHeight(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, int int_1, BlockBox mutableIntBoundingBox_1) {
       if (!isDirtOrGrass(modifiableTestableWorld_1, blockPos_1.down())) {
          return -1;
       } else {

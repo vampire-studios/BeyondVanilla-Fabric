@@ -4,9 +4,11 @@ import io.github.vampirestudios.bv.world.PlacementLevel;
 import io.github.vampirestudios.bv.world.dimension.ShadowChunkGenerator;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.chunk.ChunkStatus;
 
 import java.util.function.Predicate;
 
@@ -18,7 +20,8 @@ public class UndergroundPlacementLevel implements PlacementLevel {
 
     @Override
     public BlockPos getSurfacePos(IWorld world, Heightmap.Type heightmap, BlockPos pos) {
-        Chunk chunk = world.getChunk(pos);
+        ChunkPos chunkPos = new ChunkPos(pos);
+        Chunk chunk = world.getChunk(chunkPos.x, chunkPos.z, ChunkStatus.FEATURES);
         Predicate<BlockState> predicate = heightmap.getBlockPredicate();
 
         BlockPos.Mutable mutablePos = new BlockPos.Mutable(pos);

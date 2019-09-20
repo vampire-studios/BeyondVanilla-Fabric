@@ -5,10 +5,9 @@
 
 package io.github.vampirestudios.bv.world.dimension;
 
-import io.github.vampirestudios.bv.init.BVBlocks;
 import io.github.vampirestudios.bv.world.utils.NoiseChunkPrimer;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.SystemUtil;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.noise.OctavePerlinNoiseSampler;
 import net.minecraft.world.ChunkRegion;
@@ -63,7 +62,7 @@ public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorCo
     public ShadowChunkGenerator(IWorld iWorld_1, BiomeSource biomeSource_1, ChunkGeneratorConfig config) {
         super(iWorld_1, biomeSource_1, HORIZONTAL_GRANULARITY, VERTICAL_GRANULARITY, 256, config, false);
         this.random.consume(2620);
-        this.noiseSampler = new OctavePerlinNoiseSampler(this.random, 16);
+        this.noiseSampler = new OctavePerlinNoiseSampler(this.random, 15, 0);
         this.amplified = iWorld_1.getLevelProperties().getGeneratorType() == LevelGeneratorType.AMPLIFIED;
         this.noisePrimer = new NoiseChunkPrimer(HORIZONTAL_GRANULARITY, VERTICAL_GRANULARITY, NOISE_WIDTH, NOISE_HEIGHT);
     }
@@ -86,7 +85,7 @@ public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorCo
     public void populateEntities(ChunkRegion chunkRegion_1) {
         int int_1 = chunkRegion_1.getCenterChunkX();
         int int_2 = chunkRegion_1.getCenterChunkZ();
-        Biome biome_1 = chunkRegion_1.getChunk(int_1, int_2).getBiomeArray()[0];
+        Biome biome_1 = chunkRegion_1.getBiome((new ChunkPos(int_1, int_2)).getCenterBlockPos());
         ChunkRandom chunkRandom_1 = new ChunkRandom();
         chunkRandom_1.setSeed(chunkRegion_1.getSeed(), int_1 << 4, int_2 << 4);
         SpawnHelper.populateEntities(chunkRegion_1, biome_1, int_1, int_2, chunkRandom_1);
@@ -126,11 +125,12 @@ public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorCo
         float float_1 = 0.0F;
         float float_2 = 0.0F;
         float float_3 = 0.0F;
-        float float_4 = this.biomeSource.getBiomeForNoiseGen(int_1, int_2).getDepth();
+        int int_4 = this.getSeaLevel();
+        float float_4 = this.biomeSource.getBiome(int_1, int_4, int_2).getDepth();
 
-        for(int int_4 = -2; int_4 <= 2; ++int_4) {
-            for(int int_5 = -2; int_5 <= 2; ++int_5) {
-                Biome biome_1 = this.biomeSource.getBiomeForNoiseGen(int_1 + int_4, int_2 + int_5);
+        for(int int_5 = -2; int_5 <= 2; ++int_5) {
+            for(int int_6 = -2; int_6 <= 2; ++int_6) {
+                Biome biome_1 = this.biomeSource.getBiome(int_1 + int_6, 100, int_2 + int_6);
                 float float_5 = biome_1.getDepth();
                 float float_6 = biome_1.getScale();
                 if (this.amplified && float_5 > 0.0F) {
@@ -138,7 +138,7 @@ public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorCo
                     float_6 = 1.0F + float_6 * 4.0F;
                 }
 
-                float float_7 = BIOME_WEIGHT_TABLE[int_4 + 2 + (int_5 + 2) * 5] / (float_5 + 2.0F);
+                float float_7 = BIOME_WEIGHT_TABLE[int_6 + 2 + (int_6 + 2) * 5] / (float_5 + 2.0F);
                 if (biome_1.getDepth() > float_4) {
                     float_7 /= 2.0F;
                 }
@@ -189,17 +189,6 @@ public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorCo
 
     public int getSeaLevel() {
         return SEA_LEVEL;
-    }
-
-    public static class Config extends ChunkGeneratorConfig {
-        public static Config createDefault() {
-            Config config = new Config();
-            config.setDefaultBlock(BVBlocks.SHADOW_STONE.getDefaultState());
-//            config.setDefaultFluid(MidnightBlocks.DARK_WATER.getDefaultState());
-            config.setDefaultFluid(Blocks.AIR.getDefaultState());
-
-            return config;
-        }
     }
 
 }

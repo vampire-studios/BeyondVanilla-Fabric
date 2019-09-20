@@ -6,11 +6,13 @@ import io.github.vampirestudios.bv.world.biomes.layer.ShadowSubBiomeLayer;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.layer.*;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.LongFunction;
 
 public final class BVShadowBiomeLayers {
 
-	private static Biome[] biomes = new Biome[] {};
+	private static Set<Biome> biomes = new HashSet<>();
 
 	public static BiomeLayerSampler[] createLayers(long seed) {
 		ImmutableList<LayerFactory<CachingLayerSampler>> samplers = build(seed, (salt) -> new CachingLayerContext(25, seed, salt));
@@ -36,12 +38,12 @@ public final class BVShadowBiomeLayers {
 			biomeFactory = ScaleLayer.NORMAL.create(context.apply(2000 + i), biomeFactory);
 		}
 
-		LayerFactory<T> cellScaleFactory = CellScaleLayer.INSTANCE.create(context.apply(10L), biomeFactory);
+		LayerFactory<T> cellScaleFactory = AddSunflowerPlainsLayer.INSTANCE.create(context.apply(10L), biomeFactory);
 
 		return ImmutableList.of(biomeFactory, cellScaleFactory);
 	}
 
-	public static Biome[] getBiomes() {
+	public static Set<Biome> getBiomes() {
 		return biomes;
 	}
 }

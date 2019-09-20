@@ -45,13 +45,10 @@ dependencies {
 	modApi "vampirelib:VampireLib:${project.vampirelib_version}"
 
 	// For dev env testing
-	modImplementation "com.jamieswhiteshirt:developer-mode:${project.developer_mode_version}"
 	modImplementation("me.shedaniel:RoughlyEnoughItems:${project.rei_version}") {
 		exclude(module: "ModMenu")
 	}
 	modImplementation "io.github.prospector:modmenu:${project.modmenu_version}"
-	modImplementation "leaf-decay:leaf:decay:${project.leaf_decay_version}"
-	modImplementation "worldedit:worldedit-fabric-mc1.14.4:${project.we_version}"
 	modImplementation "artificemc:artifice:${project.artifice_version}"
 
 	compile "com.google.code.findbugs:jsr305:3.0.2"

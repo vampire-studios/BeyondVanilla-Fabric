@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "open": {
+      "true": {
+        "model": "bv:block/portal_open"
+      },
+      "false": {
+        "model": "bv:block/portal_closed"
+      }
+    }
+  }
+}

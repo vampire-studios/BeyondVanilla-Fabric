@@ -1,0 +1,19 @@
+{
+    "block.bv.shadow_stone": "Shadow Stone",
+    "block.bv.shadow_grass_block": "Shadow Grass",
+    "block.bv.shadow_dirt": "Shadow Dirt",
+    "block.bv.shadow_log": "Shadow Log",
+    "block.bv.shadow_wood": "Shadow Wood",
+    "block.bv.stripped_shadow_log": "Stripped Shadow Log",
+    "block.bv.stripped_shadow_wood": "Stripped Shadow Wood",
+    "block.bv.shadow_planks": "Shadow Planks",
+    "block.bv.shadow_leaves": "Shadow Leaves",
+    "block.bv.shadow_sapling": "Shadow Sapling",
+    "block.bv.shadow_door": "Shadow Door",
+    "block.bv.shadow_trapdoor": "Shadow Trapdoor",
+    "block.bv.shadow_slab": "Shadow Slab",
+    "block.bv.shadow_stairs": "Shadow Stairs",
+    "block.bv.shadow_fence": "Shadow Fence",
+    "block.bv.shadow_fence_gate": "Shadow Fence Gate",
+    "block.bv.shadow_plant": "Shadow Plant"
+}
