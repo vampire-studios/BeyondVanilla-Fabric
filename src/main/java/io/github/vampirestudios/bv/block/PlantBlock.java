@@ -2,7 +2,6 @@ package io.github.vampirestudios.bv.block;
 
 import io.github.vampirestudios.bv.init.BVBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderLayer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.class_4538;
@@ -29,10 +28,6 @@ public class PlantBlock extends Block {
    public boolean canPlaceAt(BlockState blockState_1, class_4538 viewableWorld_1, BlockPos blockPos_1) {
       BlockPos blockPos_2 = blockPos_1.down();
       return this.canPlantOnTop(viewableWorld_1.getBlockState(blockPos_2), viewableWorld_1, blockPos_2);
-   }
-
-   public BlockRenderLayer getRenderLayer() {
-      return BlockRenderLayer.CUTOUT;
    }
 
    public boolean isTranslucent(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1) {
