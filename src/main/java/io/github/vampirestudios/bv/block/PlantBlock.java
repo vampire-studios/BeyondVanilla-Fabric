@@ -26,7 +26,7 @@ public class PlantBlock extends Block {
    }
 
    public boolean canPlaceAt(BlockState blockState_1, class_4538 viewableWorld_1, BlockPos blockPos_1) {
-      BlockPos blockPos_2 = blockPos_1.down();
+      BlockPos blockPos_2 = blockPos_1.method_10074();
       return this.canPlantOnTop(viewableWorld_1.getBlockState(blockPos_2), viewableWorld_1, blockPos_2);
    }
 

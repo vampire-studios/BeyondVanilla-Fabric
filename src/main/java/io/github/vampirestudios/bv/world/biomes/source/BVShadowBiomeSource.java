@@ -6,22 +6,22 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.layer.BiomeLayerSampler;
 import net.minecraft.world.biome.source.BiomeSource;
 
+import java.util.Set;
+
 public class BVShadowBiomeSource extends BiomeSource {
 	private final BiomeLayerSampler noiseLayer;
-	private final BiomeLayerSampler biomeLayer;
+	private static final Set<Biome> biomes = ImmutableSet.of(BVBiomes.SHADOW_PLAINS, BVBiomes.SHADOW_FOREST, BVBiomes.SHADOW_SWAMP);
 
 	public BVShadowBiomeSource(long seed) {
-		super(ImmutableSet.of(BVBiomes.SHADOW_PLAINS));
+		super(biomes);
 
 		BiomeLayerSampler[] layerSamplers = BVShadowBiomeLayers.createLayers(seed);
 
-//		this.field_20643.addAll(BVShadowBiomeLayers.getBiomes());
 		this.noiseLayer = layerSamplers[0];
-		this.biomeLayer = layerSamplers[1];
 	}
 
 	public Biome getBiome(int x, int y, int z) {
-		return this.biomeLayer.sample(x, z);
+		return this.noiseLayer.sample(x, z);
 	}
 
 }

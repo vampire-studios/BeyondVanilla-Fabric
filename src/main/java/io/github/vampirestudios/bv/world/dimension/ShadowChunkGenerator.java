@@ -60,7 +60,7 @@ public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorCo
     private final double[] noiseFalloff = this.buidlNoiseFalloff();
 
     public ShadowChunkGenerator(IWorld iWorld_1, BiomeSource biomeSource_1, ChunkGeneratorConfig config) {
-        super(iWorld_1, biomeSource_1, HORIZONTAL_GRANULARITY, VERTICAL_GRANULARITY, 256, config, false);
+        super(iWorld_1, biomeSource_1, HORIZONTAL_GRANULARITY, VERTICAL_GRANULARITY, 128, config, false);
         this.random.consume(2620);
         this.noiseSampler = new OctavePerlinNoiseSampler(this.random, 15, 0);
         this.amplified = iWorld_1.getLevelProperties().getGeneratorType() == LevelGeneratorType.AMPLIFIED;

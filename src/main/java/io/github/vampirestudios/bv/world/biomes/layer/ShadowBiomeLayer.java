@@ -18,6 +18,8 @@ public enum ShadowBiomeLayer implements InitLayer {
 	ShadowBiomeLayer() {
 		// Add vanilla nether
 		this.addBiome(BVBiomes.SHADOW_PLAINS, 10);
+		this.addBiome(BVBiomes.SHADOW_FOREST, 10);
+		this.addBiome(BVBiomes.SHADOW_SWAMP, 10);
 	}
 
 	@Override

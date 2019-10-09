@@ -1,12 +1,12 @@
 package io.github.vampirestudios.bv.world.biomes;
 
 import io.github.vampirestudios.bv.init.BVBlocks;
-import io.github.vampirestudios.bv.init.BVPlacements;
 import io.github.vampirestudios.bv.world.gen.feature.ShadowTreeFeature;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.CountDecoratorConfig;
+import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
+import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
@@ -28,7 +28,7 @@ public class ShadowPlains extends Biome {
                 .depth(1.0F)
         );
 
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(new ShadowTreeFeature(DefaultFeatureConfig::deserialize, true), FeatureConfig.DEFAULT, BVPlacements.COUNT_UNDERGROUND_32, new CountDecoratorConfig(10)));
+        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, Biome.configureFeature(new ShadowTreeFeature(DefaultFeatureConfig::deserialize, true), FeatureConfig.DEFAULT, Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(10, 0.1F, 1)));
     }
 
     @Override

@@ -21,14 +21,8 @@
   "entrypoints": {
     "main": [
       "io.github.vampirestudios.bv.BeyondVanilla"
-    ],
-    "client": [
-      "io.github.vampirestudios.bv.world.dimension.FabricDimensionClientInit"
     ]
   },
-  "mixins": [
-    "bv.mixins.json"
-  ],
 
   "depends": {
     "fabricloader": ">=0.4.0",

@@ -6,7 +6,7 @@ import net.minecraft.block.Fertilizable;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.entity.EntityContext;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.state.StateFactory;
+import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
@@ -31,8 +31,8 @@ public class SaplingBlock extends PlantBlock implements Fertilizable {
       return SHAPE;
    }
 
-   public void onScheduledTick(BlockState blockState_1, ServerWorld world_1, BlockPos blockPos_1, Random random_1) {
-      super.onScheduledTick(blockState_1, world_1, blockPos_1, random_1);
+   public void scheduledTick(BlockState blockState_1, ServerWorld world_1, BlockPos blockPos_1, Random random_1) {
+      super.scheduledTick(blockState_1, world_1, blockPos_1, random_1);
       if (world_1.getLightLevel(blockPos_1.up()) >= 9 && random_1.nextInt(7) == 0) {
          this.generate(world_1, blockPos_1, blockState_1, random_1);
       }
@@ -60,7 +60,7 @@ public class SaplingBlock extends PlantBlock implements Fertilizable {
       this.generate(world_1, blockPos_1, blockState_1, random_1);
    }
 
-   protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
+   protected void appendProperties(StateManager.Builder<Block, BlockState> stateFactory$Builder_1) {
       stateFactory$Builder_1.add(STAGE);
    }
 

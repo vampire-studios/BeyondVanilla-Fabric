@@ -163,7 +163,7 @@ public class ShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
       if (int_1 == -1) {
          return false;
       } else {
-         this.setToDirt(modifiableTestableWorld_1, blockPos_1.down());
+         this.setToDirt(modifiableTestableWorld_1, blockPos_1.method_10074());
          int int_2 = (int)((double)int_1 * 0.618D);
          if (int_2 >= int_1) {
             int_2 = int_1 - 1;
@@ -226,7 +226,7 @@ public class ShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
 
 
    private int getTreeHeight(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, int int_1, BlockBox mutableIntBoundingBox_1) {
-      if (!isDirtOrGrass(modifiableTestableWorld_1, blockPos_1.down())) {
+      if (!isDirtOrGrass(modifiableTestableWorld_1, blockPos_1.method_10074())) {
          return -1;
       } else {
          int int_2 = this.makeOrCheckBranch(set_1, modifiableTestableWorld_1, blockPos_1, blockPos_1.up(int_1 - 1), false, mutableIntBoundingBox_1);

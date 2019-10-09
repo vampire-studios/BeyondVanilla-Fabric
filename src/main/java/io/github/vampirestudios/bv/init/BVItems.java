@@ -1,21 +1,16 @@
 package io.github.vampirestudios.bv.init;
 
 import io.github.vampirestudios.bv.BeyondVanilla;
-import io.github.vampirestudios.bv.world.dimension.EntityPlacer;
-import io.github.vampirestudios.bv.world.dimension.FabricDimensions;
 import io.github.vampirestudios.vampirelib.utils.registry.RegistryUtils;
-import net.minecraft.block.pattern.BlockPattern;
-import net.minecraft.entity.Entity;
+import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 
@@ -30,12 +25,7 @@ public class BVItems {
                     FabricDimensions.teleport(player, DimensionType.OVERWORLD, null);
                 } else {
                     // going to our custom dimension
-                    FabricDimensions.teleport(player, BeyondVanilla.THE_SHADOW, new EntityPlacer() {
-                        @Override
-                        public BlockPattern.TeleportTarget placeEntity(Entity teleported, ServerWorld destination, Direction portalDir, double horizontalOffset, double verticalOffset) {
-                            return null;
-                        }
-                    });
+                    FabricDimensions.teleport(player, BeyondVanilla.THE_SHADOW, null);
                 }
             }
 
