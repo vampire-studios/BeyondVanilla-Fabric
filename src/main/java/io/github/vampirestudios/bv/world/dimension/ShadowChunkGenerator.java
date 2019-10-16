@@ -79,6 +79,15 @@ public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorCo
             }
             return null;
         });*/
+        double[] noise = this.noiseGenerator.sampleChunkNoise(chunk.getPos(), this.surfaceLayers, this.undergroundLayers);
+        this.noisePrimer.primeChunk((ChunkPrimer) chunk, noise, (density, x, y, z) -> {
+            if (density > 0.0F) {
+                return this.defaultBlock;
+            } else if (y < SEA_LEVEL && y > SURFACE_CAVE_BOUNDARY) {
+                return this.defaultFluid;
+            }
+            return null;
+        });
         super.populateNoise(world, chunk);
     }
 
