@@ -3,7 +3,6 @@ package io.github.vampirestudios.bv.world.biomes;
 import io.github.vampirestudios.bv.world.dimension.ShadowChunkGenerator;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityCategory;
-import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ChunkRegion;
 import net.minecraft.world.biome.Biome;
@@ -34,5 +33,5 @@ public interface ConfigurableBiome {
 
     Collection<ConfiguredCarver<?>> getCarversFor(GenerationStep.Carver stage);
 
-    List<Biome.SpawnEntry> getSpawnsFor(EntityType classification);
+    List<Biome.SpawnEntry> getSpawnsFor(EntityCategory classification);
 }

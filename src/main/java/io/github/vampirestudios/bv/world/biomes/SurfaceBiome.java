@@ -3,7 +3,6 @@ package io.github.vampirestudios.bv.world.biomes;
 import io.github.vampirestudios.bv.world.dimension.ShadowChunkGenerator;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityCategory;
-import net.minecraft.entity.EntityType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ChunkRegion;
 import net.minecraft.world.biome.Biome;
@@ -124,7 +123,7 @@ public abstract class SurfaceBiome extends Biome implements ConfigurableBiome {
     }
 
     @Override
-    public List<SpawnEntry> getSpawnsFor(EntityType classification) {
+    public List<SpawnEntry> getSpawnsFor(EntityCategory classification) {
         return this.getSpawnsFor(classification);
     }
 
