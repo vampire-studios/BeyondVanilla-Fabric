@@ -18,7 +18,7 @@ public class PlantBlock extends Block {
    private boolean canPlantOnTop(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1) {
       Block block_1 = blockState_1.getBlock();
       return block_1 == Blocks.GRASS_BLOCK || block_1 == Blocks.DIRT || block_1 == Blocks.COARSE_DIRT || block_1 == Blocks.SAND ||
-              block_1 == Blocks.PODZOL || block_1 == Blocks.FARMLAND || block_1 == BVBlocks.SHADOW_GRASS || block_1 == BVBlocks.SHADOW_DIRT;
+              block_1 == Blocks.PODZOL || block_1 == Blocks.FARMLAND || block_1 == BVBlocks.SHADOW_GRASS_BLOCK || block_1 == BVBlocks.SHADOW_DIRT;
    }
 
    public BlockState getStateForNeighborUpdate(BlockState blockState_1, Direction direction_1, BlockState blockState_2, IWorld iWorld_1, BlockPos blockPos_1, BlockPos blockPos_2) {

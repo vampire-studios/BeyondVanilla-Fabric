@@ -22,7 +22,9 @@ import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.chunk.SurfaceChunkGenerator;
 import net.minecraft.world.level.LevelGeneratorType;
 
-public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorConfig> {
+import java.util.Random;
+
+public class AbyssalChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorConfig> {
     private static final float[] BIOME_WEIGHT_TABLE = SystemUtil.consume(new float[25], (floats_1) -> {
         for(int int_1 = -2; int_1 <= 2; ++int_1) {
             for(int int_2 = -2; int_2 <= 2; ++int_2) {
@@ -38,9 +40,9 @@ public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorCo
     public static final int MIN_CAVE_HEIGHT = 20;
     public static final int MAX_CAVE_HEIGHT = 46;
 
-    public static final int SURFACE_CAVE_BOUNDARY = MAX_CAVE_HEIGHT + 12;
+    public static final int SURFACE_CAVE_BOUNDARY = 256;
 
-    public static final int SEA_LEVEL = SURFACE_LEVEL + 2;
+    public static final int SEA_LEVEL = 256;
 
     public static final int HORIZONTAL_GRANULARITY = 4;
     public static final int VERTICAL_GRANULARITY = 4;
@@ -60,8 +62,8 @@ public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorCo
     private final boolean amplified;
     private final double[] noiseFalloff = this.buidlNoiseFalloff();
 
-    public ShadowChunkGenerator(IWorld iWorld_1, BiomeSource biomeSource_1, ChunkGeneratorConfig config) {
-        super(iWorld_1, biomeSource_1, HORIZONTAL_GRANULARITY, VERTICAL_GRANULARITY, 128, config, false);
+    public AbyssalChunkGenerator(IWorld iWorld_1, BiomeSource biomeSource_1, ChunkGeneratorConfig config) {
+        super(iWorld_1, biomeSource_1, HORIZONTAL_GRANULARITY, VERTICAL_GRANULARITY, 256, config, false);
         this.random.consume(2620);
         this.noiseSampler = new OctavePerlinNoiseSampler(this.random, 15, 0);
         this.amplified = iWorld_1.getLevelProperties().getGeneratorType() == LevelGeneratorType.AMPLIFIED;
@@ -70,15 +72,12 @@ public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorCo
 
     @Override
     public void populateNoise(IWorld world, Chunk chunk) {
-//        double[] noise = this.noiseGenerator.sampleChunkNoise(chunk.getPos(), this.surfaceLayers, this.undergroundLayers);
         double[] noise = new double[BUFFER_HEIGHT * BUFFER_WIDTH * BUFFER_WIDTH];
         this.noisePrimer.primeChunk((ProtoChunk) chunk, noise, (density, x, y, z) -> {
             if (density > 0.0F) {
                 return this.defaultBlock;
-            } else if (y < SEA_LEVEL && y > SURFACE_CAVE_BOUNDARY) {
-                return this.defaultFluid;
             }
-            return null;
+            return this.defaultFluid;
         });
         super.populateNoise(world, chunk);
     }
@@ -181,15 +180,15 @@ public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorCo
 
     @Override
     public int getMaxY() {
-        return 128;
+        return 256;
     }
 
     public int getSpawnHeight() {
-        return this.world.getSeaLevel() + 1;
+        return MathHelper.nextInt(new Random(), this.getMaxY(), 10);
     }
 
     public int getSeaLevel() {
-        return SEA_LEVEL;
+        return this.getMaxY();
     }
 
 }

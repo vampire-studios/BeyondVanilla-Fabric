@@ -8,13 +8,12 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.FeatureConfig;
-import net.minecraft.world.gen.feature.RandomFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 
-public class ShadowForest extends Biome {
+public class ShadowSwamp extends Biome {
 
-    public ShadowForest() {
+    public ShadowSwamp() {
         super(new Settings()
                 .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, new TernarySurfaceConfig(BVBlocks.SHADOW_GRASS_BLOCK.getDefaultState(),
                         BVBlocks.SHADOW_DIRT.getDefaultState(), Blocks.AIR.getDefaultState()))
@@ -28,10 +27,8 @@ public class ShadowForest extends Biome {
                 .depth(1.0F)
         );
 
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, configureFeature(net.minecraft.world.gen.feature.Feature.RANDOM_SELECTOR,
-                new RandomFeatureConfig(new net.minecraft.world.gen.feature.Feature[]{BVFeatures.SHADOW_TREE, BVFeatures.LARGE_SHADOW_TREE},
-                new FeatureConfig[]{FeatureConfig.DEFAULT, FeatureConfig.DEFAULT}, new float[]{0.2F, 0.1F}, net.minecraft.world.gen.feature.Feature.NORMAL_TREE,
-                        FeatureConfig.DEFAULT), Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(10, 0.1F, 1)));
+        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, Biome.configureFeature(BVFeatures.SHADOW_TREE, FeatureConfig.DEFAULT,
+                Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(2, 0.1F, 1)));
     }
 
     @Override

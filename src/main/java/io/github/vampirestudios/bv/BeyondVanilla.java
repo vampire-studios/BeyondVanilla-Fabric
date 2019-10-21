@@ -4,9 +4,7 @@ import io.github.vampirestudios.bv.init.BVBiomes;
 import io.github.vampirestudios.bv.init.BVBlocks;
 import io.github.vampirestudios.bv.init.BVItems;
 import io.github.vampirestudios.bv.init.BVPlacements;
-import io.github.vampirestudios.bv.world.dimension.ChunkGeneratorTypeWorkaround;
-import io.github.vampirestudios.bv.world.dimension.ShadowChunkGenerator;
-import io.github.vampirestudios.bv.world.dimension.ShadowDimension;
+import io.github.vampirestudios.bv.world.dimension.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensionType;
 import net.minecraft.block.pattern.BlockPattern;
@@ -29,6 +27,12 @@ public class BeyondVanilla implements ModInitializer {
             (teleported, destination, portalDir, portalX, portalY) -> new BlockPattern.TeleportTarget(new Vec3d(0, 100, 0), teleported.getVelocity(), 0)).
             factory(ShadowDimension::new).buildAndRegister(new Identifier(MOD_ID, "the_shadow"));
     public static final ChunkGeneratorType<ChunkGeneratorConfig, ShadowChunkGenerator> SHADOW_CHUNK_GENERATOR =
+            new ChunkGeneratorTypeWorkaround().getChunkGeneratorType(ChunkGeneratorConfig::new);
+
+    public static final DimensionType THE_ABYSS = FabricDimensionType.builder().desiredRawId(200).defaultPlacer(
+            (teleported, destination, portalDir, portalX, portalY) -> new BlockPattern.TeleportTarget(new Vec3d(0, 100, 0), teleported.getVelocity(), 0)).
+            factory(AbyssalDimension::new).buildAndRegister(new Identifier(MOD_ID, "the_abyss"));
+    public static final ChunkGeneratorType<ChunkGeneratorConfig, AbyssalChunkGenerator> ABYSSAL_CHUNK_GENERATOR =
             new ChunkGeneratorTypeWorkaround().getChunkGeneratorType(ChunkGeneratorConfig::new);
 
     @Override

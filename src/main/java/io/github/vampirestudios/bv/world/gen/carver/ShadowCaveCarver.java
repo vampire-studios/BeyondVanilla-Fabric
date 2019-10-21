@@ -19,7 +19,7 @@ import java.util.function.Function;
 public class ShadowCaveCarver extends Carver<ProbabilityConfig> {
    public ShadowCaveCarver(Function<Dynamic<?>, ? extends ProbabilityConfig> function_1) {
       super(function_1, 128);
-      this.alwaysCarvableBlocks = ImmutableSet.of(Blocks.STONE, Blocks.GRANITE, Blocks.DIORITE, Blocks.ANDESITE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.GRASS_BLOCK, Blocks.NETHERRACK, BVBlocks.SHADOW_STONE, BVBlocks.SHADOW_DIRT, BVBlocks.SHADOW_GRASS);
+      this.alwaysCarvableBlocks = ImmutableSet.of(Blocks.STONE, Blocks.GRANITE, Blocks.DIORITE, Blocks.ANDESITE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.GRASS_BLOCK, Blocks.NETHERRACK, BVBlocks.SHADOW_STONE, BVBlocks.SHADOW_DIRT, BVBlocks.SHADOW_GRASS_BLOCK);
       this.carvableFluids = ImmutableSet.of(Fluids.LAVA, Fluids.WATER);
    }
 
