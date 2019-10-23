@@ -5,8 +5,8 @@ import io.github.vampirestudios.bv.init.BVFeatures;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.*;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
+import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 
@@ -26,14 +26,14 @@ public class ShadowPlains extends Biome {
                 .depth(1.0F)
         );
 
-        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, Biome.configureFeature(BVFeatures.SHADOW_TREE, FeatureConfig.DEFAULT,
-                Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(0, 0.05F, 1)));
-        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.NETHER_SPRING, new NetherSpringFeatureConfig(false), Decorator.COUNT_RANGE, new RangeDecoratorConfig(8, 4, 8, 128)));
-        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.HELL_FIRE, FeatureConfig.DEFAULT, Decorator.HELL_FIRE, new CountDecoratorConfig(10)));
-        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.GLOWSTONE_BLOB, FeatureConfig.DEFAULT, Decorator.LIGHT_GEM_CHANCE, new CountDecoratorConfig(10)));
-        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.GLOWSTONE_BLOB, FeatureConfig.DEFAULT, Decorator.COUNT_RANGE, new RangeDecoratorConfig(10, 0, 0, 128)));
-        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.BUSH, new BushFeatureConfig(Blocks.BROWN_MUSHROOM.getDefaultState()), Decorator.CHANCE_RANGE, new ChanceRangeDecoratorConfig(0.5F, 0, 0, 128)));
-        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.BUSH, new BushFeatureConfig(Blocks.RED_MUSHROOM.getDefaultState()), Decorator.CHANCE_RANGE, new ChanceRangeDecoratorConfig(0.5F, 0, 0, 128)));
+        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, BVFeatures.SHADOW_TREE_TEST.method_23397(BVFeatures.SHADOW_TREE_CONFIG)
+                .method_23388(Decorator.COUNT_EXTRA_HEIGHTMAP.method_23475(new CountExtraChanceDecoratorConfig(0, 0.05F, 1))));
+//        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.NETHER_SPRING, new NetherSpringFeatureConfig(false), Decorator.COUNT_RANGE, new RangeDecoratorConfig(8, 4, 8, 128)));
+//        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.HELL_FIRE, FeatureConfig.DEFAULT, Decorator.HELL_FIRE, new CountDecoratorConfig(10)));
+//        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.GLOWSTONE_BLOB, FeatureConfig.DEFAULT, Decorator.LIGHT_GEM_CHANCE, new CountDecoratorConfig(10)));
+//        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.GLOWSTONE_BLOB, FeatureConfig.DEFAULT, Decorator.COUNT_RANGE, new RangeDecoratorConfig(10, 0, 0, 128)));
+//        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.BUSH, new BushFeatureConfig(Blocks.BROWN_MUSHROOM.getDefaultState()), Decorator.CHANCE_RANGE, new ChanceRangeDecoratorConfig(0.5F, 0, 0, 128)));
+//        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.BUSH, new BushFeatureConfig(Blocks.RED_MUSHROOM.getDefaultState()), Decorator.CHANCE_RANGE, new ChanceRangeDecoratorConfig(0.5F, 0, 0, 128)));
     }
 
     @Override

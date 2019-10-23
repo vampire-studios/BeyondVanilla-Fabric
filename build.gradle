@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '0.2.5-SNAPSHOT'
 	id 'maven-publish'
+	id "com.wynprice.cursemaven" version "2.1.0"
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -32,8 +33,6 @@ dependencies {
 
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}"
 	modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
-	modCompile "net.fabricmc.fabric-api:fabric-dimensions-v1:0.2.0+969462033c"
-	include "net.fabricmc.fabric-api:fabric-dimensions-v1:0.2.0+969462033c"
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modApi("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}-${project.full_mc_version}") {
 		force = true
@@ -44,7 +43,8 @@ dependencies {
 		force = true
 	}
 
-	modApi "vampirelib:vampirelib:${project.vampirelib_version}"
+	modImplementation "curse.maven:vampirelib:2804912"
+	include "curse.maven:vampirelib:2804912"
 
 	// For dev env testing
 	modImplementation("me.shedaniel:RoughlyEnoughItems:${project.rei_version}") {

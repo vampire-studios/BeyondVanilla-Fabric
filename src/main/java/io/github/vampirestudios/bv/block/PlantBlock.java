@@ -4,11 +4,11 @@ import io.github.vampirestudios.bv.init.BVBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.class_4538;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.WorldView;
 
 public class PlantBlock extends Block {
    PlantBlock(Block.Settings block$Settings_1) {
@@ -25,7 +25,8 @@ public class PlantBlock extends Block {
       return !blockState_1.canPlaceAt(iWorld_1, blockPos_1) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(blockState_1, direction_1, blockState_2, iWorld_1, blockPos_1, blockPos_2);
    }
 
-   public boolean canPlaceAt(BlockState blockState_1, class_4538 viewableWorld_1, BlockPos blockPos_1) {
+   @Override
+   public boolean canPlaceAt(BlockState blockState_1, WorldView viewableWorld_1, BlockPos blockPos_1) {
       BlockPos blockPos_2 = blockPos_1.method_10074();
       return this.canPlantOnTop(viewableWorld_1.getBlockState(blockPos_2), viewableWorld_1, blockPos_2);
    }

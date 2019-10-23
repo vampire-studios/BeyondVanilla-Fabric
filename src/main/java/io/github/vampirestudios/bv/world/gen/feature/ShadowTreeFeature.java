@@ -1,8 +1,4 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
+/*
 package io.github.vampirestudios.bv.world.gen.feature;
 
 import com.mojang.datafixers.Dynamic;
@@ -117,7 +113,8 @@ public class ShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
         return this.height + random_1.nextInt(3);
     }
 
-    /*private void makeCocoa(ModifiableWorld modifiableWorld_1, int int_1, BlockPos blockPos_1, Direction direction_1) {
+    */
+/*private void makeCocoa(ModifiableWorld modifiableWorld_1, int int_1, BlockPos blockPos_1, Direction direction_1) {
         this.setBlockState(modifiableWorld_1, blockPos_1, Blocks.COCOA.getDefaultState().with(CocoaBlock.AGE, int_1).with(CocoaBlock.FACING, direction_1));
     }
 
@@ -134,7 +131,8 @@ public class ShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
             blockPos_1 = blockPos_1.method_10074();
         }
 
-    }*/
+    }*//*
+
 
     protected static boolean isDirtOrGrass(TestableWorld testableWorld_1, BlockPos blockPos_1) {
         return testableWorld_1.testBlockState(blockPos_1, (blockState_1) -> {
@@ -154,3 +152,4 @@ public class ShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
         LEAVES = BVBlocks.SHADOW_LEAVES.getDefaultState();
     }
 }
+*/

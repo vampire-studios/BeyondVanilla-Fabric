@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "particle": "bv:block/eye_block",
+        "all": "bv:block/eye_block"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "particle": "bv:block/chiseled_shadow_stone_2",
+        "all": "bv:block/chiseled_shadow_stone_2"
+    }
+}

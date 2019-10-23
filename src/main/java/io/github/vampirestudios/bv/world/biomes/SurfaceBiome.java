@@ -89,7 +89,7 @@ public abstract class SurfaceBiome extends Biome implements ConfigurableBiome {
     }
 
     @Override
-    public void add(GenerationStep.Feature stage, ConfiguredFeature<?> feature) {
+    public void add(GenerationStep.Feature stage, ConfiguredFeature<?, ?> feature) {
         super.addFeature(stage, feature);
     }
 
@@ -99,8 +99,8 @@ public abstract class SurfaceBiome extends Biome implements ConfigurableBiome {
     }
 
     @Override
-    public <C extends FeatureConfig> void add(StructureFeature<C> structure, C config) {
-        super.addStructureFeature(structure, config);
+    public <C extends FeatureConfig> void add(ConfiguredFeature<C, ? extends StructureFeature<C>> structure) {
+        super.addStructureFeature(structure);
     }
 
     @Override

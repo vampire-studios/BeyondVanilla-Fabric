@@ -29,7 +29,7 @@ public class BVItems {
                 }
             }
 
-            return new TypedActionResult<>(ActionResult.SUCCESS, player.getStackInHand(hand), false);
+            return new TypedActionResult<>(ActionResult.SUCCESS, player.getStackInHand(hand));
         }
     }, new Identifier(BeyondVanilla.MOD_ID, "teleport_staff"));
 

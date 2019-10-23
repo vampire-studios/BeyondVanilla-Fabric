@@ -1,3 +1,4 @@
+/*
 package io.github.vampirestudios.bv.world.gen.feature;
 
 import com.google.common.collect.Lists;
@@ -21,7 +22,7 @@ public class LargeShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureCo
     private static final BlockState LEAVES;
 
     public LargeShadowTreeFeature(Function<Dynamic<?>, ? extends DefaultFeatureConfig> function_1, boolean boolean_1) {
-        super(function_1, boolean_1);
+        super(function_1);
     }
 
     private void makeLeafLayer(ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, float float_1, BlockBox blockBox_1, Set<BlockPos> set_1) {
@@ -246,3 +247,4 @@ public class LargeShadowTreeFeature extends AbstractTreeFeature<DefaultFeatureCo
         }
     }
 }
+*/

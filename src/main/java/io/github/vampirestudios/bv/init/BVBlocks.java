@@ -37,6 +37,9 @@ public class BVBlocks {
     public static Block SHADOW_FENCE;
     public static Block SHADOW_FENCE_GATE;
     public static Block SHADOW_PLANT;
+    public static Block POLISHED_SHADOW_STONE;
+    public static Block EYEBALL_BLOCK_ONE;
+    public static Block EYEBALL_BLOCK_TWO;
 //    public static Block SHADOW_PORTAL;
 
     static {
@@ -55,6 +58,12 @@ public class BVBlocks {
                 "shadow_cobblestone"));
         MOSSY_SHADOW_COBBLESTONE = RegistryUtils.register(new Block(Block.Settings.copy(Blocks.STONE)), new Identifier(BeyondVanilla.MOD_ID,
                 "mossy_shadow_cobblestone"));
+        POLISHED_SHADOW_STONE = RegistryUtils.register(new Block(Block.Settings.copy(Blocks.STONE)), new Identifier(BeyondVanilla.MOD_ID,
+                "polished_shadow_stone"));
+        EYEBALL_BLOCK_ONE = RegistryUtils.register(new Block(Block.Settings.copy(Blocks.STONE)), new Identifier(BeyondVanilla.MOD_ID,
+                "eyeball_block_one"));
+        EYEBALL_BLOCK_TWO = RegistryUtils.register(new Block(Block.Settings.copy(Blocks.STONE)), new Identifier(BeyondVanilla.MOD_ID,
+                "eyeball_block_two"));
 
         SHADOW_LOG = RegistryUtils.register(new LogBlock(MaterialColor.BROWN, Block.Settings.copy(Blocks.OAK_LOG)), new Identifier(BeyondVanilla.MOD_ID,
                 "shadow_log"));

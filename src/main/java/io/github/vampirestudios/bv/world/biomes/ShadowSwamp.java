@@ -7,7 +7,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 
@@ -15,7 +14,7 @@ public class ShadowSwamp extends Biome {
 
     public ShadowSwamp() {
         super(new Settings()
-                .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, new TernarySurfaceConfig(BVBlocks.SHADOW_GRASS_BLOCK.getDefaultState(),
+                .configureSurfaceBuilder(SurfaceBuilder.SWAMP, new TernarySurfaceConfig(BVBlocks.SHADOW_GRASS_BLOCK.getDefaultState(),
                         BVBlocks.SHADOW_DIRT.getDefaultState(), Blocks.AIR.getDefaultState()))
                 .scale(1.0F)
                 .temperature(0.0F)
@@ -27,8 +26,8 @@ public class ShadowSwamp extends Biome {
                 .depth(1.0F)
         );
 
-        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, Biome.configureFeature(BVFeatures.SHADOW_TREE, FeatureConfig.DEFAULT,
-                Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(2, 0.1F, 1)));
+        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, BVFeatures.SHADOW_TREE_TEST.method_23397(BVFeatures.SHADOW_TREE_CONFIG)
+                .method_23388(Decorator.COUNT_EXTRA_HEIGHTMAP.method_23475(new CountExtraChanceDecoratorConfig(2, 0.1F, 1))));
     }
 
     @Override

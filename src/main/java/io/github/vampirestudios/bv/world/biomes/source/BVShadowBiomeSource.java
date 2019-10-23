@@ -20,7 +20,7 @@ public class BVShadowBiomeSource extends BiomeSource {
 		this.noiseLayer = layerSamplers[0];
 	}
 
-	public Biome getBiome(int x, int y, int z) {
+	public Biome getStoredBiome(int x, int y, int z) {
 		return this.noiseLayer.sample(x, z);
 	}
 
