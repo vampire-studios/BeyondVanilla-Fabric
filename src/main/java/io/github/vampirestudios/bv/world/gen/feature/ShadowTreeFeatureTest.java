@@ -9,7 +9,6 @@ import com.mojang.datafixers.Dynamic;
 import io.github.vampirestudios.bv.init.BVBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.class_4626;
-import net.minecraft.class_4640;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -17,36 +16,37 @@ import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
+import net.minecraft.world.gen.feature.NormalTreeFeatureConfig;
 
 import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 
-public class ShadowTreeFeatureTest extends class_4626<class_4640> {
+public class ShadowTreeFeatureTest extends class_4626<NormalTreeFeatureConfig> {
 
-    public ShadowTreeFeatureTest(Function<Dynamic<?>, ? extends class_4640> config) {
+    public ShadowTreeFeatureTest(Function<Dynamic<?>, ? extends NormalTreeFeatureConfig> config) {
         super(config);
     }
 
-    public boolean generate(ModifiableTestableWorld modifiableTestableWorld_1, Random random_1, BlockPos blockPos_1, Set<BlockPos> set_1, Set<BlockPos> set_2, BlockBox blockBox_1, class_4640 class_4640_1) {
-        int int_1 = class_4640_1.field_21291 + random_1.nextInt(class_4640_1.field_21260 + 1) + random_1.nextInt(class_4640_1.field_21261 + 1);
-        int int_2 = class_4640_1.field_21262 >= 0 ? class_4640_1.field_21262 + random_1.nextInt(class_4640_1.field_21263 + 1) : int_1 - (class_4640_1.field_21266 + random_1.nextInt(class_4640_1.field_21267 + 1));
-        int int_3 = class_4640_1.field_21259.method_23452(random_1, int_2, int_1, class_4640_1);
-        Optional<BlockPos> optional_1 = this.method_23378(modifiableTestableWorld_1, int_1, int_2, int_3, blockPos_1, class_4640_1);
+    public boolean generate(ModifiableTestableWorld modifiableTestableWorld_1, Random random_1, BlockPos blockPos_1, Set<BlockPos> set_1, Set<BlockPos> set_2, BlockBox blockBox_1, NormalTreeFeatureConfig NormalTreeFeatureConfig_1) {
+        int int_1 = NormalTreeFeatureConfig_1.baseHeight + random_1.nextInt(NormalTreeFeatureConfig_1.heightRandA + 1) + random_1.nextInt(NormalTreeFeatureConfig_1.heightRandB + 1);
+        int int_2 = NormalTreeFeatureConfig_1.trunkHeight >= 0 ? NormalTreeFeatureConfig_1.trunkHeight + random_1.nextInt(NormalTreeFeatureConfig_1.trunkHeightRandom + 1) : int_1 - (NormalTreeFeatureConfig_1.field_21266 + random_1.nextInt(NormalTreeFeatureConfig_1.field_21267 + 1));
+        int int_3 = NormalTreeFeatureConfig_1.foliagePlacer.method_23452(random_1, int_2, int_1, NormalTreeFeatureConfig_1);
+        Optional<BlockPos> optional_1 = this.method_23378(modifiableTestableWorld_1, int_1, int_2, int_3, blockPos_1, NormalTreeFeatureConfig_1);
         if (!optional_1.isPresent()) {
             return false;
         } else {
             BlockPos blockPos_2 = optional_1.get();
             this.setToDirt(modifiableTestableWorld_1, blockPos_2.method_10074());
-            class_4640_1.field_21259.method_23448(modifiableTestableWorld_1, random_1, class_4640_1, int_1, int_2, int_3, blockPos_2, set_2);
-            this.method_23379(modifiableTestableWorld_1, random_1, int_1, blockPos_2, class_4640_1.field_21264 + random_1.nextInt(class_4640_1.field_21265 + 1), set_1, blockBox_1, class_4640_1);
+            NormalTreeFeatureConfig_1.foliagePlacer.method_23448(modifiableTestableWorld_1, random_1, NormalTreeFeatureConfig_1, int_1, int_2, int_3, blockPos_2, set_2);
+            this.method_23379(modifiableTestableWorld_1, random_1, int_1, blockPos_2, NormalTreeFeatureConfig_1.trunkTopOffsetRandom + random_1.nextInt(NormalTreeFeatureConfig_1.field_21265 + 1), set_1, blockBox_1, NormalTreeFeatureConfig_1);
             return true;
         }
     }
 
     @Override
-    public boolean generate(IWorld var1, ChunkGenerator<? extends ChunkGeneratorConfig> var2, Random var3, BlockPos var4, class_4640 var5) {
+    public boolean generate(IWorld var1, ChunkGenerator<? extends ChunkGeneratorConfig> var2, Random var3, BlockPos var4, NormalTreeFeatureConfig var5) {
         return false;
     }
 

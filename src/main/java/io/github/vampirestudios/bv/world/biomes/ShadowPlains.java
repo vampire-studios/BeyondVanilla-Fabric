@@ -26,8 +26,8 @@ public class ShadowPlains extends Biome {
                 .depth(1.0F)
         );
 
-        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, BVFeatures.SHADOW_TREE_TEST.method_23397(BVFeatures.SHADOW_TREE_CONFIG)
-                .method_23388(Decorator.COUNT_EXTRA_HEIGHTMAP.method_23475(new CountExtraChanceDecoratorConfig(0, 0.05F, 1))));
+        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, BVFeatures.SHADOW_TREE_TEST.configure(BVFeatures.SHADOW_TREE_CONFIG)
+                .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(0, 0.05F, 1))));
 //        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.NETHER_SPRING, new NetherSpringFeatureConfig(false), Decorator.COUNT_RANGE, new RangeDecoratorConfig(8, 4, 8, 128)));
 //        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.HELL_FIRE, FeatureConfig.DEFAULT, Decorator.HELL_FIRE, new CountDecoratorConfig(10)));
 //        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, configureFeature(Feature.GLOWSTONE_BLOB, FeatureConfig.DEFAULT, Decorator.LIGHT_GEM_CHANCE, new CountDecoratorConfig(10)));

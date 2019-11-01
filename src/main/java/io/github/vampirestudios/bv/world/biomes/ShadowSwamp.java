@@ -26,8 +26,8 @@ public class ShadowSwamp extends Biome {
                 .depth(1.0F)
         );
 
-        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, BVFeatures.SHADOW_TREE_TEST.method_23397(BVFeatures.SHADOW_TREE_CONFIG)
-                .method_23388(Decorator.COUNT_EXTRA_HEIGHTMAP.method_23475(new CountExtraChanceDecoratorConfig(2, 0.1F, 1))));
+        this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, BVFeatures.SHADOW_TREE_TEST.configure(BVFeatures.SHADOW_TREE_CONFIG)
+                .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(2, 0.1F, 1))));
     }
 
     @Override
