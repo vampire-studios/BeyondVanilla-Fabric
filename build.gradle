@@ -43,8 +43,8 @@ dependencies {
 		force = true
 	}
 
-	modImplementation "curse.maven:vampirelib:2804912"
-	include "curse.maven:vampirelib:2804912"
+	modImplementation "curse.maven:vampirelib:${project.vampirelib_version}"
+	include "curse.maven:vampirelib:${project.vampirelib_version}"
 
 	// For dev env testing
 	modImplementation("me.shedaniel:RoughlyEnoughItems:${project.rei_version}") {
