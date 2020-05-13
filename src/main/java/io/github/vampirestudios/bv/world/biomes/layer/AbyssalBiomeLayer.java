@@ -4,8 +4,8 @@ import com.google.common.collect.ImmutableSet;
 import io.github.vampirestudios.bv.init.BVBiomes;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.layer.InitLayer;
-import net.minecraft.world.biome.layer.LayerRandomnessSource;
+import net.minecraft.world.biome.layer.type.InitLayer;
+import net.minecraft.world.biome.layer.util.LayerRandomnessSource;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;

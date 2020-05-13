@@ -24,7 +24,7 @@ public class SaplingBlock extends PlantBlock implements Fertilizable {
    protected SaplingBlock(SaplingGenerator saplingGenerator_1, Block.Settings block$Settings_1) {
       super(block$Settings_1);
       this.generator = saplingGenerator_1;
-      this.setDefaultState(this.stateFactory.getDefaultState().with(STAGE, 0));
+      this.setDefaultState(this.stateManager.getDefaultState().with(STAGE, 0));
    }
 
    public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext entityContext_1) {
@@ -43,7 +43,7 @@ public class SaplingBlock extends PlantBlock implements Fertilizable {
       if (blockState_1.get(STAGE) == 0) {
          iWorld_1.setBlockState(blockPos_1, blockState_1.cycle(STAGE), 4);
       } else {
-         this.generator.generate(iWorld_1, iWorld_1.method_14178().getChunkGenerator(), blockPos_1, blockState_1, random_1);
+         this.generator.generate(iWorld_1, iWorld_1.getChunkManager().getChunkGenerator(), blockPos_1, blockState_1, random_1);
       }
 
    }

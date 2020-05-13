@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 public class ShadowDimension extends Dimension {
 
     public ShadowDimension(World world_1, DimensionType dimensionType_1) {
-        super(world_1, dimensionType_1);
+        super(world_1, dimensionType_1, 0.0F);
     }
 
     @Environment(EnvType.CLIENT)
@@ -77,7 +77,7 @@ public class ShadowDimension extends Dimension {
     }
 
     @Override
-    public boolean shouldRenderFog(int var1, int var2) {
+    public boolean isFogThick(int i, int j) {
         return false;
     }
 

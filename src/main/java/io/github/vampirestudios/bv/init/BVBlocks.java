@@ -81,8 +81,8 @@ public class BVBlocks {
 
         SHADOW_SLAB = RegistryUtils.register(new SlabBaseBlock(Block.Settings.copy(Blocks.OAK_SLAB)), new Identifier(BeyondVanilla.MOD_ID, "shadow_slab"));
         SHADOW_STAIR = RegistryUtils.register(new StairsBaseBlock(SHADOW_PLANKS.getDefaultState()), new Identifier(BeyondVanilla.MOD_ID, "shadow_stairs"));
-        SHADOW_FENCE = RegistryUtils.register(new FenceBaseBlock(Block.Settings.copy(Blocks.OAK_FENCE)), new Identifier(BeyondVanilla.MOD_ID, "shadow_fence"));
-        SHADOW_FENCE_GATE = RegistryUtils.register(new FenceGateBaseBlock(Block.Settings.copy(Blocks.OAK_FENCE_GATE)), new Identifier(BeyondVanilla.MOD_ID,
+        SHADOW_FENCE = RegistryUtils.register(new FenceBlock(Block.Settings.copy(Blocks.OAK_FENCE)), new Identifier(BeyondVanilla.MOD_ID, "shadow_fence"));
+        SHADOW_FENCE_GATE = RegistryUtils.register(new FenceGateBlock(Block.Settings.copy(Blocks.OAK_FENCE_GATE)), new Identifier(BeyondVanilla.MOD_ID,
                 "shadow_fence_gate"));
 
         SHADOW_PLANT = RegistryUtils.register(new FlowerBlock(StatusEffects.GLOWING, 12, FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly()

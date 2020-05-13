@@ -54,12 +54,12 @@ public abstract class SurfaceBiome extends Biome implements ConfigurableBiome {
     }*/
 
     @Override
-    public int getGrassColorAt(BlockPos pos) {
+    public int getGrassColorAt(double x, double z) {
         return this.grassColor;
     }
 
     @Override
-    public int getFoliageColorAt(BlockPos pos) {
+    public int getFoliageColor() {
         return this.foliageColor;
     }
 
@@ -71,10 +71,6 @@ public abstract class SurfaceBiome extends Biome implements ConfigurableBiome {
         return this.densityScale;
     }
 
-    public int getSkyColor() {
-        return this.skyColor;
-    }
-
     public float getFogStart() {
         return this.fogStart;
     }
@@ -84,7 +80,7 @@ public abstract class SurfaceBiome extends Biome implements ConfigurableBiome {
     }
 
     @Override
-    public int getSkyColor(float temperature) {
+    public int getSkyColor() {
         return this.skyColor;
     }
 

@@ -12,7 +12,7 @@ public class ShadowPortalBlock extends Block {
 
     public ShadowPortalBlock() {
         super(Block.Settings.copy(Blocks.SMOOTH_STONE));
-        this.setDefaultState(this.getStateFactory().getDefaultState().with(OPEN, false));
+        this.setDefaultState(this.getStateManager().getDefaultState().with(OPEN, false));
     }
 
     /*@Override

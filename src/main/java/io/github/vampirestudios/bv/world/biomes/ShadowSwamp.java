@@ -31,7 +31,7 @@ public class ShadowSwamp extends Biome {
     }
 
     @Override
-    public int getSkyColor(float float_1) {
+    public int getSkyColor() {
         return 0x171B32;
     }
 

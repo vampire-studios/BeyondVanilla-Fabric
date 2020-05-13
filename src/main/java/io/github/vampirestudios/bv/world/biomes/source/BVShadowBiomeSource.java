@@ -3,7 +3,7 @@ package io.github.vampirestudios.bv.world.biomes.source;
 import com.google.common.collect.ImmutableSet;
 import io.github.vampirestudios.bv.init.BVBiomes;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.layer.BiomeLayerSampler;
+import net.minecraft.world.biome.source.BiomeLayerSampler;
 import net.minecraft.world.biome.source.BiomeSource;
 
 import java.util.Set;
@@ -20,7 +20,7 @@ public class BVShadowBiomeSource extends BiomeSource {
 		this.noiseLayer = layerSamplers[0];
 	}
 
-	public Biome getStoredBiome(int x, int y, int z) {
+	public Biome getBiomeForNoiseGen(int x, int y, int z) {
 		return this.noiseLayer.sample(x, z);
 	}
 

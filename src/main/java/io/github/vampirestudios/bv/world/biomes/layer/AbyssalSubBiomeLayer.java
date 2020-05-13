@@ -2,8 +2,8 @@ package io.github.vampirestudios.bv.world.biomes.layer;
 
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.layer.IdentitySamplingLayer;
-import net.minecraft.world.biome.layer.LayerRandomnessSource;
+import net.minecraft.world.biome.layer.type.IdentitySamplingLayer;
+import net.minecraft.world.biome.layer.util.LayerRandomnessSource;
 
 import java.util.*;
 

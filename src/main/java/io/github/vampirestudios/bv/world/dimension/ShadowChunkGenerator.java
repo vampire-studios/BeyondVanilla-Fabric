@@ -6,7 +6,7 @@
 package io.github.vampirestudios.bv.world.dimension;
 
 import io.github.vampirestudios.bv.world.utils.NoiseChunkPrimer;
-import net.minecraft.util.SystemUtil;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.noise.OctavePerlinNoiseSampler;
@@ -23,7 +23,7 @@ import net.minecraft.world.gen.chunk.SurfaceChunkGenerator;
 import net.minecraft.world.level.LevelGeneratorType;
 
 public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorConfig> {
-    private static final float[] BIOME_WEIGHT_TABLE = SystemUtil.consume(new float[25], (floats_1) -> {
+    private static final float[] BIOME_WEIGHT_TABLE = Util.make(new float[25], (floats_1) -> {
         for(int int_1 = -2; int_1 <= 2; ++int_1) {
             for(int int_2 = -2; int_2 <= 2; ++int_2) {
                 float float_1 = 10.0F / MathHelper.sqrt((float)(int_1 * int_1 + int_2 * int_2) + 0.2F);
@@ -127,11 +127,11 @@ public class ShadowChunkGenerator extends SurfaceChunkGenerator<ChunkGeneratorCo
         float float_2 = 0.0F;
         float float_3 = 0.0F;
         int int_4 = this.getSeaLevel();
-        float float_4 = this.biomeSource.getStoredBiome(int_1, int_4, int_2).getDepth();
+        float float_4 = this.biomeSource.getBiomeForNoiseGen(int_1, int_4, int_2).getDepth();
 
         for(int int_5 = -2; int_5 <= 2; ++int_5) {
             for(int int_6 = -2; int_6 <= 2; ++int_6) {
-                Biome biome_1 = this.biomeSource.getStoredBiome(int_1 + int_6, 100, int_2 + int_6);
+                Biome biome_1 = this.biomeSource.getBiomeForNoiseGen(int_1 + int_6, 100, int_2 + int_6);
                 float float_5 = biome_1.getDepth();
                 float float_6 = biome_1.getScale();
                 if (this.amplified && float_5 > 0.0F) {

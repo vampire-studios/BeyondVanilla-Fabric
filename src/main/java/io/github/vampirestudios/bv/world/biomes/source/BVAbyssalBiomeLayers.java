@@ -4,7 +4,10 @@ import com.google.common.collect.ImmutableList;
 import io.github.vampirestudios.bv.world.biomes.layer.AbyssalBiomeLayer;
 import io.github.vampirestudios.bv.world.biomes.layer.AbyssalSubBiomeLayer;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.layer.*;
+import net.minecraft.world.biome.layer.AddSunflowerPlainsLayer;
+import net.minecraft.world.biome.layer.ScaleLayer;
+import net.minecraft.world.biome.layer.util.*;
+import net.minecraft.world.biome.source.BiomeLayerSampler;
 
 import java.util.HashSet;
 import java.util.Set;
