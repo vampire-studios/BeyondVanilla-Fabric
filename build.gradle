@@ -52,7 +52,9 @@ dependencies {
 	modImplementation "io.github.prospector:modmenu:${project.modmenu_version}"
 	modImplementation "leaf-decay:leaf:decay:${project.leaf_decay_version}"
 	modImplementation "worldedit:worldedit-fabric-mc1.14.4:${project.we_version}"
-	modImplementation "artificemc:artifice:${project.artifice_version}"
+
+	modImplementation "com.lettuce.fudge:artifice:${project.artifice_version}"
+	include "com.lettuce.fudge:artifice:${project.artifice_version}"
 
 	compile "com.google.code.findbugs:jsr305:3.0.2"
 }
