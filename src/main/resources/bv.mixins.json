@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.vampirestudios.bv.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "SkyPropertiesMixin"
+  ],
+  "client": [
+    "SkyPropertiesAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -4,7 +4,9 @@ import com.google.common.collect.ImmutableList;
 import io.github.vampirestudios.bv.world.biomes.layer.ShadowBiomeLayer;
 import io.github.vampirestudios.bv.world.biomes.layer.ShadowSubBiomeLayer;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.layer.*;
+import net.minecraft.world.biome.layer.ScaleLayer;
+import net.minecraft.world.biome.layer.util.*;
+import net.minecraft.world.biome.source.BiomeLayerSampler;
 
 import java.util.function.LongFunction;
 
@@ -36,9 +38,10 @@ public final class BVShadowBiomeLayers {
 			biomeFactory = ScaleLayer.NORMAL.create(context.apply(2000 + i), biomeFactory);
 		}
 
-		LayerFactory<T> cellScaleFactory = CellScaleLayer.INSTANCE.create(context.apply(10L), biomeFactory);
+//		LayerFactory<T> cellScaleFactory = CellScaleLayer.INSTANCE.create(context.apply(10L), biomeFactory);
 
-		return ImmutableList.of(biomeFactory, cellScaleFactory);
+//		return ImmutableList.of(biomeFactory, cellScaleFactory);
+		return ImmutableList.of(biomeFactory);
 	}
 
 	public static Biome[] getBiomes() {

@@ -2,7 +2,7 @@ package io.github.vampirestudios.bv.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityContext;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -25,8 +25,9 @@ public class FlowerBlock extends PlantBlock {
 
     }
 
-    public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext entityContext_1) {
-        Vec3d vec3d_1 = blockState_1.getOffsetPos(blockView_1, blockPos_1);
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        Vec3d vec3d_1 = state.getModelOffset(world, pos);
         return SHAPE.offset(vec3d_1.x, vec3d_1.y, vec3d_1.z);
     }
 

@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.2.5-SNAPSHOT'
+	id 'fabric-loom' version '0.7-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -11,52 +11,72 @@ version = project.mod_version
 group = project.maven_group
 
 minecraft {
+	accessWidener = file("src/main/resources/bv.aw")
 }
 
 repositories {
 	mavenCentral()
 	mavenLocal()
+	maven {
+		url  "https://dl.bintray.com/natanfudge/libs"
+	}
+	maven { url "https://maven.shedaniel.me/" }
+	maven { url "https://dl.bintray.com/shedaniel/autoconfig1u/" }
 	maven{ url="https://minecraft.curseforge.com/api/maven" }
-	maven{ url="http://maven.modmuss50.me" }
 	maven{ url="https://maven.fabricmc.net" }
 	maven{ url="https://jitpack.io" }
-	maven{ url="http://maven.sargunv.s3-website-us-west-2.amazonaws.com/" }
-	//maven{ url="http://server.bbkr.space:8081/artifactory/libs-snapshot/" } //shouldn't need snapshot repo any more
 	maven{ url="http://server.bbkr.space:8081/artifactory/libs-release/" }
-	maven{ url="https://maven.swordglowsblue.com/" }
-	maven{ url="https://maven.jamieswhiteshirt.com/libs-release/" }
 }
 
 dependencies {
+	//to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+
 	modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
-
-	// Fabric API. This is technically optional, but you probably want it anyway.
-	modApi("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}") {
+	modCompile("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}") {
 		force = true
 	}
 
-	modApi "me.sargunvohra.mcmods:auto-config:${project.auto_config_version}"
-	modImplementation("me.shedaniel.cloth:config-2:${project.cloth_config_version}") {
+	modCompile ("me.shedaniel.cloth:config-2:${project.cloth_config_version}") { exclude group: "net.fabricmc.fabric-api" }
+	include ("me.shedaniel.cloth:config-2:${project.cloth_config_version}") { exclude group: "net.fabricmc.fabric-api" }
+
+	modCompile("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig1u}") {
+		exclude group: "net.fabricmc.fabric-api"
+		force = true
+	}
+	include("me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig1u}") {
+		exclude group: "net.fabricmc.fabric-api"
 		force = true
 	}
 
-	modApi "vampirelib:VampireLib:${project.vampirelib_version}"
-
-	// For dev env testing
-	modImplementation "com.jamieswhiteshirt:developer-mode:${project.developer_mode_version}"
-	modImplementation("me.shedaniel:RoughlyEnoughItems:${project.rei_version}") {
-		exclude(module: "ModMenu")
+	modImplementation ("io.github.vampirestudios:VampireLib-Fabric:2.3.1+build.1-21w07a") {
+		exclude group: "net.fabricmc.fabric-api"
+		exclude group: "io.github.cottonmc"
 	}
-	modImplementation "io.github.prospector:modmenu:${project.modmenu_version}"
-	modImplementation "leaf-decay:leaf:decay:${project.leaf_decay_version}"
-	modImplementation "worldedit:worldedit-fabric-mc1.14.4:${project.we_version}"
+	include ("io.github.vampirestudios:VampireLib-Fabric:2.3.1+build.1-21w07a") {
+		exclude group: "net.fabricmc.fabric-api"
+		exclude group: "io.github.cottonmc"
+	}
 
-	modImplementation "com.lettuce.fudge:artifice:${project.artifice_version}"
-	include "com.lettuce.fudge:artifice:${project.artifice_version}"
+	modImplementation ("com.lettuce.fudge:artifice:0.15.2+21w07a") {
+		exclude group: "net.fabricmc.fabric-api"
+		force = true
+	}
+	include ("com.lettuce.fudge:artifice:0.15.2+21w07a") {
+		exclude group: "net.fabricmc.fabric-api"
+		force = true
+	}
 
-	compile "com.google.code.findbugs:jsr305:3.0.2"
+	modImplementation ("com.github.cottonmc:Jankson-Fabric:1.16-SNAPSHOT") {
+		exclude group: "net.fabricmc.fabric-api"
+		force = true
+	}
+
+	modApi("me.shedaniel.cloth.api:cloth-api:${project.cloth_events_version}") {
+		exclude group: "net.fabricmc.fabric-api"
+		transitive = false
+	}
 }
 
 processResources {

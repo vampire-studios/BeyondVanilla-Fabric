@@ -1,10 +1,10 @@
 package io.github.vampirestudios.bv.world.biomes.layer;
 
 import io.github.vampirestudios.bv.init.BVBiomes;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.layer.InitLayer;
-import net.minecraft.world.biome.layer.LayerRandomnessSource;
+import net.minecraft.world.biome.layer.type.InitLayer;
+import net.minecraft.world.biome.layer.util.LayerRandomnessSource;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public enum ShadowBiomeLayer implements InitLayer {
 
 	@Override
 	public int sample(LayerRandomnessSource rand, int x, int z) {
-		return Registry.BIOME.getRawId(biomes.get(rand.nextInt(totalWeight)));
+		return BuiltinRegistries.BIOME.getRawId(biomes.get(rand.nextInt(totalWeight)));
 	}
 
 	private Biome[] biomesArray = new Biome[] {};

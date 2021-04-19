@@ -1,9 +1,9 @@
 package io.github.vampirestudios.bv.world.biomes.layer;
 
-import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.layer.IdentitySamplingLayer;
-import net.minecraft.world.biome.layer.LayerRandomnessSource;
+import net.minecraft.world.biome.layer.type.IdentitySamplingLayer;
+import net.minecraft.world.biome.layer.util.LayerRandomnessSource;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
@@ -13,11 +13,11 @@ public enum ShadowSubBiomeLayer implements IdentitySamplingLayer {
 
 	@Override
 	public int sample(LayerRandomnessSource rand, int prev) {
-		Biome biome = Registry.BIOME.get(prev);
+		Biome biome = BuiltinRegistries.BIOME.get(prev);
 		if (subBiomeMap.containsKey(biome)) {
 			for (SubBiomeEntry entry : subBiomeMap.get(biome)) {
 				if (rand.nextInt(100) < entry.chance) {
-					return Registry.BIOME.getRawId(entry.biome);
+					return BuiltinRegistries.BIOME.getRawId(entry.biome);
 				}
 			}
 
